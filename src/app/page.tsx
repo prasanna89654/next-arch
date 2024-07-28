@@ -16,6 +16,11 @@ const Page = () => {
     router.push('/apifetch');
   };
 
+
+  const handleLoginClick = () => {
+    router.push('/login');
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
       <div className="flex space-x-4">
@@ -24,6 +29,9 @@ const Page = () => {
         </Button>
         <Button variant="red" onClick={handleApiClick}>
           React Query Test Page
+        </Button>
+        <Button variant="outline" onClick={handleLoginClick}>
+          Login Page
         </Button>
       </div>
     </div>

@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import localFont from '@next/font/local'
+import localFont from 'next/font/local'
+import "./globals.css"
+import { ThemeProvider } from "@/components/themes/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
-
-const matter = localFont({
-  src: '../../public/fonts/Matter-Regular.ttf',
-      display: 'swap'
-    },
-    // {
-    //   path: '../../public/fonts/Poppins-Bold.ttf',
-    //   weight: '700'
-    // }
-  // ],
-  // variable: '--font-matter'
-)
+// Font files can be colocated inside of `pages`
+const matter = localFont({ src: '../../public/fonts/Matter-Regular.ttf' })
 
 
 export const metadata: Metadata = {
@@ -28,11 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-   <div className = {matter.className}>
- {children}
-
-   </div>
-     
-    
+    <html lang="en">
+      <body className={matter.className}>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+      </body>      
+    </html>
   );
 }
